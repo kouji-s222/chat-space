@@ -7,7 +7,7 @@
 |password|string|null: false|
 |username|string|null: false|
 ### Association
-- has_many :posts
+- has_many :groups
 - has_many :comments
 
 ## groupsテーブル
@@ -19,8 +19,6 @@
 ### Association
 - belongs_to :user
 - has_many :comments
-- has_many :posts_tags
-- has_many  :tags,  through:  :posts_tags
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -29,7 +27,7 @@
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :post
+- belongs_to :groups
 - belongs_to :user
 
 ## groups_usersテーブル
