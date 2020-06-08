@@ -2,12 +2,13 @@
   .chat-side
     .side-header
       .side-box
-        .side-box__name ユーザー
+        .side-box__name
+          = current_user.name
         .side-box__icon
           = link_to "#", class: "new-group__btn" do
-            <i class='far fa-edit'></i>
-          = link_to "#", class: "account__btn" do
-            <i class="fas fa-cog"></i>
+            = icon('fas', 'edit')
+          = link_to edit_user_path(current_user), class: "account__btn" do
+            = icon('fas', 'cog')
     .group-contact
       .group-box
         .group-box__name ＜サイドバー＞
