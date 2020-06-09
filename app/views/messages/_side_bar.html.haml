@@ -5,14 +5,15 @@
         .side-box__name
           = current_user.name
         .side-box__icon
-          = link_to "#", class: "new-group__btn" do
+          = link_to new_group_path class: "new-group__btn" do
             = icon('fas', 'edit')
           = link_to edit_user_path(current_user), class: "account__btn" do
             = icon('fas', 'cog')
-    .group-contact
-      .group-box
-        .group-box__name ＜サイドバー＞
-        .group-box__message ハロー
-      .group-box
-        .group-box__name ＜サイドバー2＞
-        .group-box__message ハロー2
+    .GroupList
+    - current_user.groups.each do |group|
+      .Group
+        = link_to '#' do
+          .Group__name
+            = group.name
+          .Group__message
+            メッセージはまだありません
