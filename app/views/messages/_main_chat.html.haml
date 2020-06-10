@@ -2,25 +2,22 @@
   .chat-main
     .main-header
       .main-box
-        .main-box__title グループ
-        .main-box__member メンバー
-      = link_to "#", class: "edit__btn" do
+        .main-box__title
+          = @group.name
+        .main-box__member 
+          Member :&nbsp
+          .member
+          - @group.users.each do |user|
+            = user.name
+      = link_to edit_group_path(@group), class: "edit__btn" do
         Edit
-    .message
-      .message-box
-        .message-box__toolbar
-          .message-box__username メンバー
-          .message-box__date 202020
-        .message-box__content おはよう！
-        .message-box__toolbar
-          .message-box__username メンバー2
-          .message-box__date 20202020
-        .message-box__content 今日は夜から雨
-    .footer
-      .form
-        .form__content
-          .form__content__input メッセージ
-          %label{class: "form__content__image"}
-            = icon('fas', 'image')
-            %input{type: "file", class: "form__content__image-file"}
-        %input{type:"submit", value:"Send", class:"send"}
+    .MessageField
+      = render @messages
+    .Footer
+      = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+        .Form__contents
+          = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
+          = f.label :image, class: 'Form__inputImage' do
+            = icon('far', 'image', class: 'Form__icon')
+            = f.file_field :image, class: 'Hidden'
+        = f.submit 'Send', class: 'Form__submit'

@@ -50,7 +50,6 @@
     .Group {
       height: 91px;
       position: relative;
-      color: #ffffff;
       &__name {
         height: 15px;
         width: 260px;
@@ -58,6 +57,7 @@
         top: 20px;
         left: 20px;
         font-size: 15px;
+        color: #ffffff;
       }
       &__message {
         height: 11px;
@@ -66,6 +66,7 @@
         top: 40px;
         left: 20px;
         font-size: 11px;
+        color: #ffffff;
       }
     }
   }
@@ -92,6 +93,10 @@
         bottom: 0px;
         font-size: 12px;
         color: #999999;
+        display: flex;
+        .member {
+          font-size: 12px;
+        }
       }
     }
     .edit__btn {
@@ -107,27 +112,26 @@
       text-decoration: none;
     }
   }
-  .message {
+  .MessageField {
     height: calc(100vh - 190px);
     background-color: #fafafa;
-    position: relative;
-    .message-box{
-      position: absolute;
-      left: 40px;
-      &__toolbar {
+    overflow: scroll;
+    .MessageBox{
+      margin-left: 40px;
+      .MessageInfo {
         display: flex;
         margin-top: 35px;
       }
-        &__username {
+        .MessageInfo__userName {
           font-size: 16px;
           color: #333333;
         }
-        &__date {
+        .MessageInfo__date {
           font-size: 12px;
           color: #999999;
           padding-left: 10px;
         }
-      &__content {
+      .Message {
       font-size: 14px;
       color: #434a54;
       margin-top: 12px;
@@ -135,34 +139,40 @@
       }
     }
   }
-  .footer {
+  .Footer {
     height: 90px;
     background-color: #d2d2d2;
     padding: 20px 50px 20px 40px;
     box-sizing: border-box;
-    .form {
+    .Form {
       display: flex;
       justify-content: space-between;
-      &__content {
+      .Form__contents {
         width: 100%;
         position: relative;
         background-color: #ffffff;
         display: flex;
-        &__input {
+        .Form__inputContent {
           height: 50px;
+          width: 100%;
           padding: 0 40px 0 10px;
+          border: none;
         }
-        &__image {
+        .Form__inputImage {
           height: 50px;
           position: absolute;
+          display: flex;
+          align-items: center;
           right: 10px;
-          font-size: 25px;
-          &-file{
+          .Form__icon{
+            font-size: 25px;
+          }
+          .Hidden {
             display: none;
           }
         }
       }
-      .send {
+      &__submit {
         height: 50px;
         font-size: 16px;
         border: none;
